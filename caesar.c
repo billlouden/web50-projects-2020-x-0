@@ -37,21 +37,23 @@ int main(int argc, string argv[])
         
             if islower(plaintext[i])            // check for lowercase
                 // get integer at [i] subtract "a" get remainer add k
-            {
+
                 printf("%c", (((plaintext[i] + k) - 97) % 26) + 97);
-            }
+
             else if (isupper(plaintext[i]))    // check for uppercase
                 // get integer at [i] subtract "a" add k
-            {
+
                 printf("%c", (((plaintext[i] + k) - 65) % 26) + 65);
-            }
+
             else
-            {            
+         
                 printf("%c", plaintext[i]);
-            }
-                  
-            printf("\n");
+
+            }      
             return 0;
+            printf("\n");
+            
         }
+        
     } 
-}
+
