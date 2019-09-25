@@ -2,58 +2,57 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-// Building a Caesar cipher - 3rd time the charm
-// only do what instructor wants
-int main(int argc, string argv[])
-    
-{
-    //get key as a string
-    string key  = argv[1];
-    // ensure some argument is entered on command line
-    // must be 2 -- the command + the key
-    if (argc != 2)
-    {
-        // printf("Invalid key\n");
-        return 1;
-    }
+#include <stdlib.h>
 
-    // convert string to an integer
-    int k = atoi(argv[1]);
-    // error if integer is <= zero
-    if (k <= 0)
+int main(int argc, string argv[])
+{
+    //checking the two inputs ha
+    if (argc == 2)
     {
-        printf("Enter a numeric key\n");
-        return 1;
+        int n = strlen(argv[1]);
+        int i;
+        for (i = 0; i < n; i++) 
+        {
+            //checking argv[1] for any alphabetic characters present, if so                  returning the error message
+            if (isalpha(argv[1][i]))    
+            {
+                printf("Enter key as a positive number\n");
+                return 1;    
+            }
+            //checking argv[1] for all decimal digits before converting the                 string to an interger
+            else if (isdigit(argv[1][i]))
+            {
+                //this turns the key into an int variable
+                int key = atoi(argv[1]);
+                //requests the message to be coded, from the user
+                string plaintext = get_string("Enter message: ");
+                printf("ciphertext: ");
+                for (int b = 0, c = strlen(plaintext); b < c; b++)
+                {
+                    //checks if the character is upper case and if so encrypts it in upper case
+                    if (isupper(plaintext[b]))
+                    {
+                        printf("%c", (((plaintext[b] + key) - 65) % 26) + 65);
+                    }
+                    //checks if character is lower case and if so encrypts it in lower case
+                    else if (islower(plaintext[b]))
+                    {    
+                        printf("%c", (((plaintext[b] + key) - 97) % 26) + 97);
+                    }
+                    //if chracter is not upper or lower case, e.g. a question mark, it prints as a question mark
+                    else
+                    {
+                        printf("%c", plaintext[b]);
+                    }
+                }
+                return 0;
+            }
+        }
     }
+    //if argc doesn't equal 2, printing error message back to user
     else
     {
-        // Sucessful key entered
-        // Prompt user for message to encrypt
-        string plaintext = get_string("Enter your Message\n");
-        printf("ciphertext: ");    
-        // iterate through characters up to length of string
-        for (int i = 0, n = strlen(plaintext); i < n; i++)
-        {
-        
-            if islower(plaintext[i])            // check for lowercase
-                // get integer at [i] subtract "a" get remainer add k
-
-                printf("%c", (((plaintext[i] + k) - 97) % 26) + 97);
-
-            else if (isupper(plaintext[i]))    // check for uppercase
-                // get integer at [i] subtract "a" add k
-
-                printf("%c", (((plaintext[i] + k) - 65) % 26) + 65);
-
-            else
-         
-                printf("%c", plaintext[i]);
-
-            }      
-            return 0;
-            printf("\n");
-            
-        }
-        
-    } 
-
+        printf("Enter one key\n");
+        return 1;
+    }
+}
