@@ -40,6 +40,7 @@ int main(int argc, string argv[])
     string result = cipher(plaintext, key);
     
     // print the result back to the user
+    printf("%s", "ciphertext: ");
     printf("%s\n", result);
     
     return 0;
