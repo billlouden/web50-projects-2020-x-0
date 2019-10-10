@@ -91,7 +91,6 @@ bool load(const char *dictionary)
         wordcount++;
     }
 
-
     // Close dictionary
     fclose(file);
 
@@ -143,5 +142,4 @@ bool unload(void)
         free(cursor);
     }
         return true;
-
 }
