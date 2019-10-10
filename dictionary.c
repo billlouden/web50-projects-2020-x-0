@@ -50,7 +50,7 @@ bool load(const char *dictionary)
         return false;
     }
 
-    // Buffer for a word
+    // create a buffer for a word
     char word[LENGTH + 1];
 
     // Insert words into hash table
@@ -94,7 +94,7 @@ bool load(const char *dictionary)
 
     // Close dictionary
     fclose(file);
-//    free(file);
+
     // Indicate success
     return true;
 }
@@ -137,10 +137,11 @@ bool unload(void)
         while (cursor != NULL)
         {
             node *temp = cursor;
-            cursor = cursor->next;
+            cursor = cursor -> next;
             free(temp);
         }
-        return true;
+        free(cursor);
     }
-    return false;
+        return true;
+
 }
