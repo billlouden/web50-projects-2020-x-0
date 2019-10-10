@@ -1,4 +1,5 @@
-// Implements a dictionary's functionality
+//  Implements a dictionary's functionality
+//  Bill Louden
 
 #include <ctype.h>
 #include <stdbool.h>
@@ -67,8 +68,10 @@ bool load(const char *dictionary)
 
         else
 
-        // Copy word into a node
-        strcpy(new_node->word, word);
+            // Copy word into a node
+        {
+            strcpy(new_node->word, word);
+        }
 
         // Insert word into a linked list
         int i = hash(word);
@@ -91,7 +94,7 @@ bool load(const char *dictionary)
 
     // Close dictionary
     fclose(file);
-
+//    free(file);
     // Indicate success
     return true;
 }
@@ -110,17 +113,18 @@ bool check(const char *word)
     int i = hash(word);
     node *cursor = hashtable[i];
 
-        while (cursor !=NULL)
+    while (cursor != NULL)
+    {
+        // Compare 2 strings
+        if (strcasecmp(cursor->word, word) == 0)
         {
-            // Compare 2 strings
-            if (strcasecmp(cursor->word,word) == 0)
-            {
-                return true;
-            }
-            else
-
+            return true;
+        }
+        else
+        {
             cursor = cursor->next;
         }
+    }
     return false;
 }
 
