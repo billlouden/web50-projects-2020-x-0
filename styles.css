@@ -1,0 +1,33 @@
+
+body
+  {
+  background-color: azure;
+}
+p {
+  font-family: "Times New Roman", Times, serif;
+}
+center {
+  text-align: center;
+  font-size: 100%;
+  color: Blue;
+}
+
+h3 {
+    font-family: arial;
+    font-size: 120%;
+}
+
+large {
+  font-size: 115%;
+}
+
+div {
+  margin: 20px;
+  border: 1px solid blue;
+}
+
+
+.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto }
