@@ -1,4 +1,4 @@
-#Hello.py
+# Hello.py
 
 from cs50 import get_string
 
