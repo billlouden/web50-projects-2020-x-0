@@ -51,7 +51,7 @@ def main():
         print(chr(char + index), end="")
     # print new line
     print()
-    return 0
+    return 1
 
 
 if __name__ == "__main__":
