@@ -17,7 +17,7 @@ def main():
     if len(argv) != 2:
         print("Usage: python caesar <number>")
         return 1
-    elif argv[1] == "":
+    if argv[1] == "":
         return 1
 
     # DONE use code to shift plain text
