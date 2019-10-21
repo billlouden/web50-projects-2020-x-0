@@ -18,7 +18,6 @@ def main():
         print("Usage: python caesar <number>")
         return 1
 
-
     # DONE use code to shift plain text
     code = int(argv[1])
 
