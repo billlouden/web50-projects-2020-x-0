@@ -14,7 +14,7 @@ def main():
     # input validity check of argv[1]
     # if I don't have a numeric...
 
-    if len(argv) != 2 or argv[1] == "":
+    if len(argv) != 2 or argv[1] == "\0":
         print("Usage: python caesar <number>")
         return 1
 
@@ -51,7 +51,7 @@ def main():
         print(chr(char + index), end="")
     # print new line
     print()
-    return 1
+    return 0
 
 
 if __name__ == "__main__":
