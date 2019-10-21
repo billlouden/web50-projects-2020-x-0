@@ -26,7 +26,7 @@ def main():
     plaintext = get_string("Plaintext: ")
 
     # prompt to queue up forthcoming ciphertext
-    print("Ciphertext: ", end="")
+    print("ciphertext: ", end="")
 
     # DONE  Convert to cipher text
     # do the conversion
