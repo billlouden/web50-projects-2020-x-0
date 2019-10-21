@@ -4,7 +4,7 @@
 #
 # Supports command line cipher code. Usage:  python caesar.py <numeric>
 #
-# import sys
+import sys
 from sys import argv
 from cs50 import get_string
 
@@ -14,11 +14,10 @@ def main():
     # input validity check of argv[1]
     # if I don't have a numeric...
 
-    if len(argv) != 2:
+    if len(sys.argv) != 2:
         print("Usage: python caesar <number>")
         return 1
-    elif argv[1] == "":
-        return 1
+
 
     # DONE use code to shift plain text
     code = int(argv[1])
