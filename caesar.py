@@ -14,7 +14,7 @@ def main():
     # input validity check of argv[1]
     # if I don't have a numeric...
 
-    if len(argv) != 2:
+    if len(argv) != 2 or argv[1] == "":
         print("Usage: python caesar <number>")
         return 1
 
