@@ -14,9 +14,11 @@ def main():
     # input validity check of argv[1]
     # if I don't have a numeric...
 
-    if len(argv) != 2 or argv[1] = "\0":
+    if len(argv) != 2:
         print("Usage: python caesar <number>")
-        exit 1
+        return 1
+    elif argv[1] == "":
+        return 1
 
     # DONE use code to shift plain text
     code = int(argv[1])
