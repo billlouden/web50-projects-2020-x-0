@@ -16,7 +16,7 @@ def main():
 
     if len(argv) != 2:
         print("Usage: python caesar <number>")
-        exit 1
+        exit(1)
 
     # DONE use code to shift plain text
     code = int(argv[1])
