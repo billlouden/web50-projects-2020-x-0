@@ -4,19 +4,10 @@ from sys import argv
 
 def main():
 
-
-    for arg in argv[1:]:
-        try:
-        # Get user input from command line
-            print("Enter filename of banned words '*.txt: '")
-            f = open(arg, 'r')
-        except OSError:
-            print('cannot find file', arg)
-            exit(1)
-        except OSError:
             if not len(argv) == 2:
-                print("Usage: python bleep.py filename")
+                print("Usage: python bleep.py filename.txt")
             exit(1)
+
         else:
 #           print("got file")
             # create a set
