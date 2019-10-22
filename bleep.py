@@ -32,7 +32,7 @@ def main():
                 message_bleep += ("*" * len(word)) + " "
 # test                print(word)
             else:
-                message_bleep += word + " "
+                message_bleep += word + "\n"
 
         # print bleeped message
         print(message_bleep.strip(),"\n")
