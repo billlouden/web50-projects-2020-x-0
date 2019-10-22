@@ -13,10 +13,10 @@ def main():
         except OSError:
             print('cannot find file', arg)
             exit(1)
-        except
-            if not len(argv) == 2:
-            print("Usage: python bleep.py filename")
-            exit(1)
+        except:
+                if not len(argv) == 2:
+                    print("Usage: python bleep.py filename")
+                exit(1)
         else:
 #           print("got file")
             # create a set
@@ -44,7 +44,7 @@ def main():
                 message_bleep += word + " "
 
         # print bleeped message
-        print(message_bleep.strip())
+        print(message_bleep.strip(),"\n")
 
 
 
