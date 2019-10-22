@@ -21,7 +21,7 @@ def main():
 
         # prompt user for message to check
         message = get_string("What message would you like to check?\n")
-        # set message_bleep to NULL
+        # set message
         message_bleep = ""
         # split message to words
         message_words = message.split(" ")
