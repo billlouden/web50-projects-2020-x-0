@@ -29,7 +29,7 @@ def main():
         # censor banned words
         for word in message_words:
             if word.lower() in banned_words:
-                message_bleep += ("*" * len(word)) + " "
+                message_bleep += ("*" * len(word)) + "\n"
 # test                print(word)
             else:
                 message_bleep += word + " "
