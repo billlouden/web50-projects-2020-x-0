@@ -1,6 +1,6 @@
 # pyton program to check for banned words in user's text
 # Bill Louden
-# The challenge here was learning how to use the set() and split() functions
+# The challenge here was learning how to use the set(), strip(), and split() functions
 
 from cs50 import get_string
 from sys import argv
