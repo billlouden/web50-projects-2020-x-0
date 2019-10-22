@@ -4,9 +4,9 @@ from sys import argv
 
 def main():
 
-            if not len(argv) == 2:
-                print("Usage: python bleep.py filename.txt")
-            exit(1)
+        if not len(argv) == 2:
+            print("Usage: python bleep.py filename.txt")
+        exit(1)
 
         else:
 #           print("got file")
@@ -32,7 +32,7 @@ def main():
                 message_bleep += ("*" * len(word)) + " "
 # test                print(word)
             else:
-                message_bleep += word + "\n"
+                message_bleep += word + " "
 
         # print bleeped message
         print(message_bleep.strip(),"\n")
