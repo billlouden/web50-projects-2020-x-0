@@ -4,18 +4,15 @@ from sys import argv
 
 def main():
 
-        if not len(argv) == 2:
-            print("Usage: python bleep.py filename.txt")
+    if not len(argv) == 2:
+        print("Usage: python bleep.py dictionary")
         exit(1)
-
-        else:
-#           print("got file")
-            # create a set
-            banned_words = set(argv[1])
+    else:
+        banned_words = set()
 
         # open banned_words file to read
         with open(argv[1], "r") as f:
-            # copy banned_words to the set
+            # copy banned_words into the set
             for line in f:
                 banned_words.add(line.strip())
 
@@ -29,7 +26,7 @@ def main():
         # censor banned words
         for word in message_words:
             if word.lower() in banned_words:
-                message_bleep += ("*" * len(word)) + "\n"
+                message_bleep += ("*" * len(word)) + " "
 # test                print(word)
             else:
                 message_bleep += word + " "
