@@ -20,7 +20,7 @@ def main():
                 banned_words.add(line.strip())
 
         # prompt user for message
-        message = get_string("What message would you like to bleep?\n")
+        message = get_string("What message would you like to check?\n")
         message_bleep = ""
         # split message to words
         message_words = message.split(" ")
