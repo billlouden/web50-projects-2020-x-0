@@ -36,8 +36,7 @@ def main():
                 message_bleep += word + " "
 
         # print bleeped message
-        print(message_bleep.strip(),"\n")
-
+        print(message_bleep.strip(), "\n")
 
 
 if __name__ == "__main__":
