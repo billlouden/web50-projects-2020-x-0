@@ -4,18 +4,18 @@ from nltk.tokenize import sent_tokenize
 
 def lines(a, b):
     """Return lines in both a and b"""
-        # TODO
-        # split strings into lines
-        # create list of all lines that are in a and b
-        # return the list
-        # \n will terminate each line
-        # look at string python methods
-        # https://docs.python.org/3/library/stdtypes.html#string-methods
-        # find lines in common
-        # choose set for data structure
-        # data-structures
-        # remove duplicate lines
-        # display list of lines in common
+    # TODO
+    # split strings into lines
+    # create list of all lines that are in a and b
+    # return the list
+    # \n will terminate each line
+    # look at string python methods
+    # https://docs.python.org/3/library/stdtypes.html#string-methods
+    # find lines in common
+    # choose set for data structure
+    # data-structures
+    # remove duplicate lines
+    # display list of lines in common
 
     a_lines = set(a.split("\n"))
     b_lines = set(b.split("\n"))
@@ -25,7 +25,7 @@ def lines(a, b):
 
 def sentences(a, b):
     """Return sentences in both a and b"""
-        # TODO
+    # TODO
     # compare sentences
     # split into sentences
     # need to determine punctuation that ends various sentences
@@ -34,7 +34,6 @@ def sentences(a, b):
     # from nltk.tokenize import sent_tokenize
     # then find sentences in common, avoiding duplicates
     # display list of natural sentences in common
-
 
     a_sentences = set(sent_tokenize(a))
     b_sentences = set(sent_tokenize(b))
