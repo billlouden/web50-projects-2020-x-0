@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <div class="col">
+
+        <legend>Compare Two Files</legend>
+    <form action="/compare" enctype="multipart/form-data" method="post">
+
+<div class="form-group">
+<!    <fieldset>
+<!      File 1:
+<!      <input type="text" name="file1" value="">
+<!	<br>
+<!      File 2:
+<!  <input type="text" name="file2" value="">
+<!  <br>
+  <hr>
+                <input class="form-control-file" name="file1" type="file">
+            </div>
+            <div class="form-group">
+                <input class="form-control-file" name="file2" type="file">
+            </div>
+            <hr>
+            <div class="form-group">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" name="algorithm" type="radio" value="lines">
+                        Compare lines
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" name="algorithm" type="radio" value="sentences">
+                        Compare sentences
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" name="algorithm" type="radio" value="substrings">
+                        Compare substrings
+                        <input class="form-control form-control-sm" min="1" max="50" name="length" placeholder="string length n" type="number">
+                    </label>
+                </div>
+            </div>
+
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+      </fieldset>
+
+{% endblock %}
