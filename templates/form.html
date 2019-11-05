@@ -5,10 +5,10 @@
 <!-- http://getbootstrap.com/docs/4.1/components/forms/ -->
 <form action="/form" method="post">
    <div class="form-row">
-   <div class="form-group col-md-4">
+   <div class="form-group col-md-3">
       <input autocomplete="off" autofocus name="name" placeholder="Name or Voter ID" type="text" >
       <p>
-      <p><b>Please select your political affiliation:</b></br>
+      <p><b>Please select your affiliation:</b></br>
          <input type="radio" name="party" value="None"> None<br>
          <input type="radio" name="party" value="Democratic"> Democratic<br>
          <input type="radio" name="party" value="Green"> Green<br>
@@ -16,8 +16,9 @@
          <input type="radio" name="party" value="Republican"> Republican<br>
    </div>
 
-   <div class="form-group col-md-6">
-      <p><b>Please Enter your Candidate for President:</b></br>
+   <div class="form-row">
+   <div class="form-group col-md-7">
+      <p><b>Please Select your Candidate:</b></br>
          <input type="radio" name="president" value="Augustson"> Augustson (G)<br>
          <input type="radio" name="president" value="Biden"> Biden (D)<br>
          <input type="radio" name="president" value="Buttigieg"> Buttigieg (D)<br>
@@ -30,6 +31,7 @@
          <input type="radio" name="president" value="Warren"> Warren (D)<br>
          <input type="radio" name="president" value="Weld"> Weld (R)
       </p>
+   </div>
    </div>
    <!-- http://getbootstrap.com/docs/4.1/components/buttons/ -->
    <button class="btn btn-primary" type="submit">Submit</button>
