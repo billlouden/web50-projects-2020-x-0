@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block main %}
+<!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+<head>
+   <title>Survey Form</title>
+<h2 class="mb-3">Voter Survey</h2>
+<!-- http://getbootstrap.com/docs/4.1/components/forms/ -->
+<form action="/form" method="post">
+   <div class="form-row">
+   <div class="form-group col-md-2">
+      <input autocomplete="off" autofocus name="name" placeholder="Name or Voter ID" type="text" >
+      <p>
+      <p><b>Select your affiliation:</b><br>
+         <input type="radio" name="party" value="None"> None<br>
+         <input type="radio" name="party" value="Democratic"> Democratic<br>
+         <input type="radio" name="party" value="Green"> Green<br>
+         <input type="radio" name="party" value="Independant"> Independent<br>
+         <input type="radio" name="party" value="Republican"> Republican<br>
+   </div>
+
+   <div class="form-row">
+   <div class="form-group col-md-7">
+      <br><br>
+      <p><b>Select your Candidate:</b><br>
+         <select name = "president" required>
+         <option value = "Select"></option>
+         <option value = "Augustson">Auguston (G)</option>
+         <option value = "Biden (D)">Biden (D)</option>
+         <option value="Buttigieg"> Buttigieg (D)</option>
+         <option value="Harris"> Harris (D)</option>
+         <option value="Kokesh"> Kokesh (L)</option>
+         <option value="Sanders"> Sanders (D)</option>
+         <option value="Steyer"> Steyer (D)</option>
+         <option value="Trump"> Trump (R)</option>
+         <option value="Walsh"> Walsh (R)</option>
+         <option value="Warren"> Warren (D)</option>
+         <option value="Weld"> Weld (R)</option>
+         </select>
+      </p>
+   </div>
+
+   <!-- http://getbootstrap.com/docs/4.1/components/buttons/ -->
+   <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+</head>
+<script>
+   document.querySelector('form').onsubmit = function() {
+     if (!document.querySelector('input[type="text"]').value) {
+       alert('Nothing Entered');
+       return false;
+     }
+     return true;
+
+   }; // uses querySelectorAll the ALL because if it is just querySelector it just selects the first input and we
+      // want all of the inputs to be selected
+</script>
+{% endblock %}

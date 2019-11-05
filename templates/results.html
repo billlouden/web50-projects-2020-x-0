@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block main %}
+<table class="table">
+   <thead>
+      <tr>
+         <th>Name</th>
+         <th>Party Affiliation</th>
+         <th>President</th>
+      </tr>
+   </thead>
+   <tbody>
+      {% for vote in votes %}
+      <tr>
+         <td>{{ vote[0] }}</td>
+         <td>{{ vote[1] }}</td>
+         <td>{{ vote[2] }}</td>
+      </tr>
+      {% endfor %}
+   </tbody>
+</table>
+{% endblock %}
