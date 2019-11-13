@@ -44,28 +44,55 @@ if not os.environ.get("API_KEY"):
 @login_required
 def index():
     """Show portfolio of stocks"""
-    # get current user
-    users = db.execute("SELECT cash FROM users WHERE id = :user_id", user_id=session["user_id"])
-    stocks = db.execute(
-        "SELECT symbol, SUM(shares) as total_shares FROM transactions WHERE user_id = :user_id GROUP BY symbol HAVING total_shares > 0", user_id=session["user_id"])
-    quotes = {}
+    portfolio = db.execute("SELECT symbol, SUM(shares) as number_of_shares, price FROM transactions WHERE user_id = :user_id GROUP BY symbol", user_id=session["user_id"])
 
-    for stock in stocks:
-        quotes[stock["symbol"]] = lookup(stock["symbol"])
+    rows = db.execute("SELECT cash FROM users WHERE id = :user_id", user_id=session["user_id"])
 
-    cash_remaining = users[0]["cash"]
-    total = cash_remaining
+    available_cash = rows[0]["cash"]
 
-    return render_template("portfolio.html", quotes=quotes, stocks=stocks, total=total, cash_remaining=cash_remaining)
-
-    return apology("TODO")
-
+    return render_template("index.html", portfolio=portfolio, available_cash=available_cash)
 
 @app.route("/buy", methods=["GET", "POST"])
 @login_required
 def buy():
     """Buy shares of stock"""
-    return apology("TODO")
+
+    #Make sure user arrives via post
+    if request.method == "POST":
+
+        stock = lookup(request.form.get("symbol"))
+
+        if stock == None:
+            return apology("invalid ticker symbol")
+
+        try:
+            shares = int(request.form.get("shares"))
+        except:
+            return apology("must be a number")
+
+        #Make sure number of shres is positive
+        if shares < 0:
+            return apology("input positive number")
+
+        rows = db.execute("SELECT cash FROM users WHERE id = :user_id",
+                            user_id=session["user_id"])
+
+        available_cash = rows[0]["cash"]
+
+        price = stock["price"]
+
+        total_price = shares * price
+
+        if available_cash < total_price:
+            return apology("insufficient funds")
+
+        db.execute("UPDATE users SET cash = cash - :total_price WHERE id = :user_id", total_price=total_price, user_id=session["user_id"])
+        db.execute("INSERT INTO 'transactions' (user_id, symbol, shares, price) VALUES (:user_id, :symbol, :shares, :price)", user_id=session["user_id"], symbol=request.form.get("symbol"), shares=shares, price=price)
+
+        return redirect("/")
+
+    else:
+        return render_template("buy.html")
 
 
 @app.route("/check", methods=["GET"])
@@ -85,10 +112,10 @@ def history():
 def login():
     """Log user in"""
 
-    # Forget any user_id
+    # Flush any user_id that might exist to start new session
     session.clear()
 
-    # User reached route via POST (as by submitting a form via POST)
+    #Make sure user reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
 
         # Ensure username was submitted
@@ -128,13 +155,11 @@ def logout():
     # Redirect user to login form
     return redirect("/")
 
-
 @app.route("/quote", methods=["GET", "POST"])
 @login_required
 def quote():
+    """Get stock quote."""
 
-    """Get a stock quote."""
-    # Ensure user reached route via POST
     if request.method == "POST":
 
         #Get stock information
@@ -142,9 +167,10 @@ def quote():
 
         #Validate ticker symbol
         if stock == None:
-            return apology("Unknown or invalid stock/ticker symbol")
+            return apology("invalid ticker symbol")
 
         return render_template("quoted.html", stock=stock)
+
     else:
         return render_template("quote.html")
 
@@ -152,41 +178,39 @@ def quote():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     """Register user"""
-    # User reached route via POST (as by submitting a form via POST)
+
+    #User reached route via POST
     if request.method == "POST":
 
-        # Ensure username was submitted
+        #User entered username
         if not request.form.get("username"):
-            return apology("You must provide a username", 400)
+            return apology("must provide username")
 
-        # Ensure password was submitted
-        elif not request.form.get("password"):
-            return apology("You must provide a password", 400)
+        #User entered password
+        elif not request.form.get("password") or not request.form.get("confirmation"):
+            return apology("must provide password")
 
+        #Confirm password matches
+        elif request.form.get("password") != request.form.get("confirmation"):
+            return apology("password must match")
 
-        # Ensure password and confirmation match
-        elif not request.form.get("password") == request.form.get("confirmation"):
-            return apology("Passwords do not match", 400)
-
-        # hash the password and insert a new user into the database
+        #Hash the password
         hash = generate_password_hash(request.form.get("password"))
-        new_user_id = db.execute("INSERT INTO users (username, hash) VALUES(:username, :hash)",
-                    username=request.form.get("username"), hash=hash)
 
-        # unique username constraint violated?
-        if not new_user_id:
-            return apology("That username is already taken, please select another", 400)
+        #Insert user into database
+        result = db.execute("INSERT INTO users (username, hash) VALUES (:username, :hash)", username=request.form.get("username"), hash=hash)
 
-        # Remember which user has logged in
-        session["user_id"] = new_user_id
+        if not result:
+            return apology("username already exists")
+        else:
+            return apology("registration complete", 200)
 
-        # Display a flash message
-        flash("You are now registered.")
+        #Remember user
+        session["user_id"] = result
 
-        # Redirect user to home page
-        return redirect(url_for("index"))
+        return redirect("/")
 
-    # User must get route via POST.  if user reached route via GET (from clicking a link or via redirect)
+    #User reached route via GET
     else:
         return render_template("register.html")
 
@@ -195,7 +219,40 @@ def register():
 @login_required
 def sell():
     """Sell shares of stock"""
-    return apology("TODO")
+
+    if request.method == "POST":
+
+        stock = lookup(request.form.get("symbol"))
+
+        if stock == None:
+            return apology("invalid ticker symbol")
+
+        try:
+            shares = int(request.form.get("shares"))
+        except:
+            return apology("must be a number")
+
+        if shares < 0:
+            return apology("input positive number")
+
+        available_shares = db.execute("SELECT SUM(shares) as total_shares FROM transactions WHERE user_id = :user_id and symbol = :symbol GROUP BY symbol",
+                                        user_id=session["user_id"], symbol=request.form.get("symbol"))
+
+        if available_shares[0]["total_shares"] < 1 or shares > available_shares[0]["total_shares"]:
+            return apology("not enough shares")
+
+        price = stock["price"]
+
+        total_price = shares * price
+
+        db.execute("UPDATE users SET cash = cash + :total_price WHERE id = :user_id", user_id=session["user_id"], total_price=total_price)
+        db.execute("INSERT INTO 'transactions' (user_id, symbol, shares, price) VALUES(:user_id, :symbol, :shares, :price)", user_id=session["user_id"], symbol=request.form.get("symbol"), shares=-shares, price=price)
+
+        return redirect("/")
+
+    else:
+        available_stocks = db.execute("SELECT symbol, SUM(shares) as total_shares FROM transactions WHERE user_id = :user_id GROUP BY symbol", user_id=session["user_id"])
+        return render_template("sell.html", available_stocks=available_stocks)
 
 
 def errorhandler(e):

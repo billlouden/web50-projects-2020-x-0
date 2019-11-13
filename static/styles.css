@@ -1,7 +1,7 @@
 nav .navbar-brand
 {
     /* size for brand */
-    font-size: xx-large;
+    font-size: x-large;
 }
 
 /* colors for brand */
@@ -43,5 +43,5 @@ main
 main img
 {
     /* constrain images on small screens */
-    max-width: 100%;
+    max-width: 50%;
 }
