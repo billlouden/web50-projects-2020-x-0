@@ -91,11 +91,11 @@ def buy():
 
         # Book keeping (TODO: should be wrapped with a transaction)
         db.execute("UPDATE users SET cash = cash - :price WHERE id = :user_id", price=total_price, user_id=session["user_id"])
-        db.execute("INSERT INTO transactions (user_id, symbol, shares, price_per_share) VALUES(:user_id, :symbol, :shares, :price)",
+        db.execute("INSERT INTO transactions (user_id, symbol, shares, price) VALUES(:user_id, :symbol, :shares, :price)",
                    user_id=session["user_id"],
                    symbol=request.form.get("symbol"),
                    shares=shares,
-                   price=price_per_share)
+                   price=price)
 
         flash("Bought!")
 
@@ -264,9 +264,9 @@ def register():
                                  username=request.form.get("username"),
                                  hash=hash)
 
-        # unique username constraint violated?
+        # duplicate username
         if not new_user_id:
-            return apology("username taken", 200)
+            return apology("username already taken", 400)
 
         # Remember which user has logged in
         session["user_id"] = new_user_id
