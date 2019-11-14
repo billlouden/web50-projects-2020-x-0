@@ -266,7 +266,7 @@ def register():
 
         # unique username constraint violated?
         if not new_user_id:
-            return apology("username taken", 400)
+            return apology("username taken", 200)
 
         # Remember which user has logged in
         session["user_id"] = new_user_id
