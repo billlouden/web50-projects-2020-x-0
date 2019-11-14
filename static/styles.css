@@ -1,7 +1,7 @@
 nav .navbar-brand
 {
     /* size for brand */
-    font-size: x-large;
+    font-size: xx-large;
 }
 
 /* colors for brand */
@@ -28,7 +28,7 @@ main .form-control
     display: inline-block;
 
     /* override Bootstrap's 100% width for form controls */
-    width: 50%;
+    width: auto;
 }
 
 main
@@ -43,5 +43,5 @@ main
 main img
 {
     /* constrain images on small screens */
-    max-width: 50%;
+    max-width: 100%;
 }
