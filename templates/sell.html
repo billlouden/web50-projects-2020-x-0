@@ -8,7 +8,7 @@
     <form action="/sell" method="post">
         <div class="form-group">
             <select class="form-control" name="symbol" placeholder="Symbol">
-                {% for stock in available_stocks %}
+                {% for stock in stocks %}
                     <option value="{{ stock.symbol }}">{{ stock.symbol }}</option>
                 {% endfor %}
             </select>

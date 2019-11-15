@@ -10,9 +10,10 @@ from helpers import apology, login_required, lookup, usd
 # Configure application
 app = Flask(__name__)
 
+# Ensure templates are auto-reloaded
+app.config["TEMPLATES_AUTO_RELOAD"] = True
+
 # Ensure responses aren't cached
-
-
 @app.after_request
 def after_request(response):
     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
@@ -81,10 +82,10 @@ def buy():
 
         # How much $$$ the user still has in her account
         cash_remaining = rows[0]["cash"]
-        price_per_share = quote["price"]
+        price = quote["price"]
 
         # Calculate the price of requested shares
-        total_price = price_per_share * shares
+        total_price = price * shares
 
         if total_price > cash_remaining:
             return apology("not enough funds")
@@ -110,8 +111,7 @@ def buy():
 def history():
     """Show history of transactions"""
 
-    transactions = db.execute(
-        "SELECT symbol, shares, price_per_share, created_at FROM transactions WHERE user_id = :user_id ORDER BY created_at ASC", user_id=session["user_id"])
+    transactions = db.execute("SELECT symbol, shares, price_per_share, created_at FROM transactions WHERE user_id = :user_id ORDER BY created_at ASC", user_id=session["user_id"])
 
     return render_template("history.html", transactions=transactions)
 
@@ -232,11 +232,11 @@ def quote():
         if quote == None:
             return apology("Must enter a stock symbol", 400)
 
-        return render_template("quoted.html", quote=quote)
+        return render_template("/quoted.html", quote=quote)
 
     # User reached route via GET (by clicking a link, etc.)
     else:
-        return render_template("quote.html")
+        return render_template("/quote.html")
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -304,8 +304,7 @@ def sell():
             return apology("can't sell less than or 0 shares", 400)
 
         # Check if we have enough shares
-        stock = db.execute("SELECT SUM(shares) as total_shares FROM transactions WHERE user_id = :user_id AND symbol = :symbol GROUP BY symbol",
-                           user_id=session["user_id"], symbol=request.form.get("symbol"))
+        stock = db.execute("SELECT SUM(shares) as total_shares FROM transactions WHERE user_id = :user_id AND symbol = :symbol GROUP BY symbol", user_id=session["user_id"], symbol=request.form.get("symbol"))
 
         if len(stock) != 1 or stock[0]["total_shares"] <= 0 or stock[0]["total_shares"] < shares:
             return apology("you can't sell less than 0 or more than you own", 400)
@@ -315,18 +314,18 @@ def sell():
 
         # How much $$$ the user still has in her account
         cash_remaining = rows[0]["cash"]
-        price_per_share = quote["price"]
+        price = quote["price"]
 
         # Calculate the price of requested shares
-        total_price = price_per_share * shares
+        total_price = price * shares
 
         # Book keeping (TODO: should be wrapped with a transaction)
         db.execute("UPDATE users SET cash = cash + :price WHERE id = :user_id", price=total_price, user_id=session["user_id"])
-        db.execute("INSERT INTO transactions (user_id, symbol, shares, price_per_share) VALUES(:user_id, :symbol, :shares, :price)",
+        db.execute("INSERT INTO transactions (user_id, symbol, shares, price) VALUES(:user_id, :symbol, :shares, :price)",
                    user_id=session["user_id"],
                    symbol=request.form.get("symbol"),
                    shares=-shares,
-                   price=price_per_share)
+                   price=price)
 
         flash("Sold!")
 
