@@ -257,15 +257,13 @@ def register():
         elif not request.form.get("password") == request.form.get("confirmation"):
             return apology("Passwords do not match", 400)
 
-        # duplicate username
-        if not new_user_id:
-            return apology("username already taken", 400)
-
         # hash the password and insert a new user in the database
         hash = generate_password_hash(request.form.get("password"))
         new_user_id = db.execute("INSERT INTO users (username, hash) VALUES(:username, :hash)", username=request.form.get("username"), hash=hash)
 
-
+        # duplicate username
+        if not new_user_id:
+            return apology("username already taken", 400)
 
         # Remember which user has logged in
         session["user_id"] = new_user_id
