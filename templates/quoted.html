@@ -7,9 +7,9 @@
 
 {% block main %}
     <p>
-        Stock Symbol: {{ stock.symbol }}
+        Stock Symbol: {{ transactions.symbol }}
     </p>
     <p>
-        Stock Price: {{ stock.price | usd }}
+        Stock Price: {{ transactions.price | usd }}
     </p>
 {% endblock %}
