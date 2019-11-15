@@ -247,23 +247,25 @@ def register():
 
         # Ensure username was submitted
         if not request.form.get("username"):
-            return apology("must provide username", 400)
+            return apology("Select a username", 400)
 
         # Ensure password was submitted
         elif not request.form.get("password"):
-            return apology("must provide password", 400)
+            return apology("User must provide a password", 400)
 
         # Ensure password and confirmation match
         elif not request.form.get("password") == request.form.get("confirmation"):
-            return apology("passwords do not match", 400)
+            return apology("Passwords do not match", 400)
+
+        # duplicate username
+        if not new_user_id:
+            return apology("username already taken", 400)
 
         # hash the password and insert a new user in the database
         hash = generate_password_hash(request.form.get("password"))
         new_user_id = db.execute("INSERT INTO users (username, hash) VALUES(:username, :hash)", username=request.form.get("username"), hash=hash)
 
-        # duplicate username
-        if not new_user_id:
-            return apology("username already taken", 400)
+
 
         # Remember which user has logged in
         session["user_id"] = new_user_id
@@ -276,7 +278,7 @@ def register():
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
-        return render_template("register.html", 200)
+        return render_template("register.html")
 
 
 @app.route("/sell", methods=["GET", "POST"])
