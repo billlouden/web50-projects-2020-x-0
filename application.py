@@ -42,8 +42,7 @@ def index():
 
     # look up the current user
     users = db.execute("SELECT cash FROM users WHERE id = :user_id", user_id=session["user_id"])
-    stocks = db.execute(
-        "SELECT symbol, SUM(shares) as total_shares FROM transactions WHERE user_id = :user_id GROUP BY symbol HAVING total_shares > 0", user_id=session["user_id"])
+    stocks = db.execute("SELECT symbol, SUM(shares) as total_shares FROM transactions WHERE user_id = :user_id GROUP BY symbol HAVING total_shares > 0", user_id=session["user_id"])
     quotes = {}
 
     for stock in stocks:
@@ -260,9 +259,7 @@ def register():
 
         # hash the password and insert a new user in the database
         hash = generate_password_hash(request.form.get("password"))
-        new_user_id = db.execute("INSERT INTO users (username, hash) VALUES(:username, :hash)",
-                                 username=request.form.get("username"),
-                                 hash=hash)
+        new_user_id = db.execute("INSERT INTO users (username, hash) VALUES(:username, :hash)", username=request.form.get("username"), hash=hash)
 
         # duplicate username
         if not new_user_id:
