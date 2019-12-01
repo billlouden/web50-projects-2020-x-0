@@ -1,0 +1,7 @@
+Psuedocode for reading an email and moving specific content to a CSV database
+1  Read from specific email box
+2   search for specific email with subject "Freef"
+2   read in data from this email into list
+3   scan for specific strings and correspondin numbers
+4   place those into tuples (dictionary pairs)
+5   write those tuples into a CSV file

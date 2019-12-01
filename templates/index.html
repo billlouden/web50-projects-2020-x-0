@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes"/>
+
+        <title>FreeFaucet Webpage</title>
+    </head>
+
+<body>
+<div class="container-fluid">
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+    <a class="nav-link active" href="index">Home</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="Read_data">Read Data</a>
+    </li>
+  </ul>
+</div>
+
+<h2>Python/HTML prototype</h2>
+This form is desiged to allow a user to log into a gmail address,<br>
+select emails of a specified subject, and extract lines containing<br>
+a specified string.  The lines selected will then be parsed into a comma<br>
+delimited list and written to a file for later processing to a csv file.<br>
+<br>
+  To use this form to log into a gmail account, you first need<br>
+  to change your gmail settings for two-factor authentication<br>
+  and then check the setting allowing this application access.<br>
+  Gmail will then provide you with an application specific password<br>
+  that must be used with your gmail address to log in.<br>
+
+
+<form action="/application.py" target="_blank" method="POST">
+  <fieldset>
+    <legend>Enter information:</legend>
+    Gmail address:<br>
+    <!-- gmail is hard-coded for this demonstration -->
+    <input type="email" size="30" id="usr" value="williamlouden@gmail.com">
+    <form action="{{ usr }}" method="get">
+    <br>
+    Password:<br>
+    <!-- password is hard-coded for this demonstration -->
+    <input type="password" size="30" id="pwd" value="wcjwjznrkjlwzcvq">
+        <form action="{{ pwd }}" method="get">
+    <br>
+    Subject:<br>
+    <!-- Subject is hard-coded for this demonstration -->
+    <input type="text" size="50" id="subj" value="FW: Stats update from FreeFaucet.io">
+        <form action="{{ subj }}" method="get">
+    <br>
+    Search String:<br>
+
+    <!-- we know that the email body has several sections with a
+         label name and a variable seperated by a colon space ": "
+         These are the fields I want to extract.
+    -->
+
+    <input type="text" size="50" id="param" value=": ">
+        <form action="{{ param }}" method="get">
+    <br>
+    <input type="submit" value="Submit">
+  </fieldset>
+</form>
+
+</body>
+</html>
