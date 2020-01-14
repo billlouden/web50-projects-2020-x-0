@@ -32,8 +32,15 @@ body {
 }
 
 p {
-  Float-left;
+  Float: left;
 }
+
+
+p::selection {
+               color: red;
+               background-color: yellow;
+           }
+
 
 ol > li {
   color: $color;
@@ -115,4 +122,4 @@ ul {
   border-radius: 2px;
   margin-bottom: 5px;
   text-align: center;
-}
+  }}
