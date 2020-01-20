@@ -1,58 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css">
     <meta charset="UTF-8">
     <title>Louden Woodworks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
 
-    <div class="topnav">
-    <a href="index.html">Home</a>
-    <a href="bio.html">Bio</a>
-    <a href="family.html">Family</a>
-    <a href="woodworks.html">Woodworking</a>
+<!--Bootstrap navbar -->
+       <nav class="navbar navbar-expand-md fixed-top navbar-blue bgcolor="light" style="background:#81D4FA">
+           <a class="navbar-brand" href="index.html">Home</a>
+           <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+           <span class="navbar-toggler-icon"></span>
+           </button>
+           <div class="collapse navbar-collapse" id="navbarMenu">
+               <ul class="navbar-nav md-auto">
+                   <!-- Website pages -->
+                   <li class="nav-item">
+                       <a href="bio.html" class="nav-link">Bio</a>
+                   </li>
+                   <li class="nav-item">
+                       <a href="Family.html" class="nav-link">Family</a>
+                   </li>
+                   <li class="nav-item">
+                       <a href="woodworks.html" class="nav-link">Interests</a>
+                   </li>
+                   <!-- Social media icons -->
+                   <li class="nav-item">
+                       <a href="https://twitter.com/billlouden?lang=en" class="nav-link"><img id="logo" src="images/twitterlogo.png" height="24"></a>
+                   </li>
+                   <li class="nav-item">
+                       <a href="https://www.linkedin.com/in/billlouden/" class="nav-link"><img src="images/linkedin-blue-style-logo-png-0.png" height="24"></a>
+                   </li>
+               </ul>
+           </div>
+       </nav>
+
+<body>
+<!-- Content -->
+  <div class="container float-left">
+    <br><br><br>
+    <h5>Woodworking</h5>
+  </div>
+    <div class="container float-left">
+    <p><p>One of my hobbies is building heirloom furniture and crafts using traditional joinery techniques.
+    <p>My company, Louden Woodworks, can build custom furniture or crafts to published plans or to customer specifications.
+      I prefer to use locally harvested wood from the Central Texas area, especially Pecan, American Elm, Maple, or Oak as available.
+      The wood is obtained from trees harvested by the city or from public lands.  These trees then have a second life as a prized
+      heirloom for generations to come.</p>
+      <p>I also work with most hardwoods such as Alder, Poplar, Cherry, Mahogany, or Walnut. More exotic species that I have
+      used for smaller projects include Padauk, PurpleHeart, Cocobolo, and Bubinga.</p>
     </div>
 
-<div class="row">
-  <div class="column">
-      <br><br><br>
-    <h2>Woodworking</h2>
-    <p>Building heirlooms for my family and yours.</p>
-      <p>My company, Louden Woodworks, can build custom furniture or crafts to published plans or to your specifications.
-      I prefer to use locally harvested wood from the Central Texas area, especially Pecan, American Elm, or Oak as available.
-      I also work with most hardwoods such as Alder, Poplar, Cherry, Mahogany, or Walnut. More exotic species that I have
-      used for smaller projects include Padauk, PurpleHeart, and Bubinga.</p>
-      <p>Prices will vary depending on project, design, and wood selection.</p>
-  </div>
-      <div class="column">
-          <br><br><br>
-    <h2>Portfolio </h2>
-    <p>This pictures some of Custom Furniture and Craft Projects I have completed.</p>
-      <table border="1px">
-          <th width="200">Item</th>
-          <th width="200">Description</th>
-          <tr>
-              <td><img src="mahoganybench.jpg" width="200" height="auto"></td>
-              <td>Backyard bench of mahogany.<p>Bench is made from solid mahogany with mortise-tenon joints throughout.
-                  Japanese symbols represent Peace & Harmony.<p>$2,500</p></td>
-          </tr>
-          <tr>
-              <td><img src="reddesk.jpg" width="200" height="auto"></td>
-              <td>Red Lacquer Desk
-              <p>Custom-made Chinese styled red-laquered desk with 5 drawers.</p>
-              <p>$1,500</p></td>
-          </tr>
-          <tr>
-              <td><img src="endtables.jpg" style="transform:rotate(180deg);" width="200" height="auto"></td>
-              <td>Maple bedside tables.<p>$350</p></td>
-          </tr>
-           <tr>
-              <td><img src="cabinet.jpg" width="200" height="auto"></td>
-              <td>Wall cabinet in Cherry and Birdseye Maple.</td>
-          </tr>
-      </table>
-  </div>
 
+
+      <div class="container float-left">Furniture and Craft Projects.
+      </div>
+        <div class="container float-left">
+          <figure><img src="images/mahoganybench.jpg" width="200" height="auto">
+          <p>Backyard bench is made from solid mahogany with mortise-tenon joints throughout.
+                  Japanese symbols represent Peace & Harmony.</p>
+                </figure>
+
+          <figure><img src="images/reddesk.jpg" width="200" height="auto">
+              <p>Red Lacquer Desk. Chinese styled red-laquered desk with 5 drawers.</p>
+            </figure>
+
+         <figure><img src="images/endtables.jpg" style="transform:rotate(180deg);" width="200" height="auto">
+              <p>Handcrafted solid maple bedside tables with traditional mortise-tenon joinery.</p>
+            </figure>
+
+          <figure><img src="images/cabinet.jpg" width="200" height="auto">
+              <p>Wall cabinet in Cherry and Birdseye Maple.</p>
+            </figure>
+
+      </div>
 </body>
 </html>

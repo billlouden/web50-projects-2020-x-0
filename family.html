@@ -5,53 +5,77 @@
     <link rel="stylesheet" href="css/styles.css">
     <meta charset="UTF-8">
     <title>Family History</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
-    <div class="topnav">
-    <a href="index.html">Home</a>
-    <a href="bio.html">Bio</a>
-    <a href="family.html">Family</a>
-    <a href="woodworks.html">Woodworking</a>
-    </div>
-
+<!--Bootstrap navbar -->
+     <nav class="navbar navbar-expand-md fixed-top navbar-blue bgcolor="Light" style="background:#81D4FA">
+         <a class="navbar-brand" href="index.html">Home</a>
+         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+         <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarMenu">
+             <ul class="navbar-nav md-auto">
+                 <!-- Website pages -->
+                 <li class="nav-item">
+                     <a href="bio.html" class="nav-link">Bio</a>
+                 </li>
+                 <li class="nav-item">
+                     <a href="Family.html" class="nav-link">Family</a>
+                 </li>
+                 <li class="nav-item">
+                     <a href="woodworks.html" class="nav-link">Interests</a>
+                 </li>
+                 <!-- Social media icons -->
+                 <li class="nav-item">
+                     <a href="https://twitter.com/billlouden?lang=en" class="nav-link"><img id="logo" src="images/twitterlogo.png" height="24"></a>
+                 </li>
+                 <li class="nav-item">
+                     <a href="https://www.linkedin.com/in/billlouden/" class="nav-link"><img src="images/linkedin-blue-style-logo-png-0.png" height="24"></a>
+                 </li>
+             </ul>
+         </div>
+     </nav>
+<!-- Content -->
     <div class="text-center float-left">
         <br><br><br>
-          <h2>My  Family Tree</h2>
+          <h5>My  Family Tree</h5>
         <div class="row">
- <div class="column">
-<p>My wife of 50 years, Sher, and I have two daughters: Heather and Summer.  We were married in 1970 while attending Ohio State University.</p>
-<h2>The Louden Surname</h2>
-<p>The Louden surname is a Scot name dating before the 11th century. Alternate spellings are: Loudon, Lowden, and the orginal, Loudoun. The Louden's are are sept of the Campbell clan (Campbell of Loudoun) and were known for their fierce defense of Scotland's Lowlands. in the 13th and 14th centuries. The Scot patriot, William Wallace, (1273-1305) was the grandson of Sir Hugh Crawford de Loudoun, and the Wallace Sword was displayed in the Loudoun Castle until the sword was sold at auction in 1930.</p>
-<p>The castle, located near Galston -- the 5th castle on the site -- was often called the "The Windsor of Scotland" due to its elegant appointments. The castle burnt down during WWII and was not restored. The castle remnants are listed as a National Historic Landmark of Scotland.</p>
+ <div class="col-md-6">
+<p align="left">My wife of 50 years, Sher, and I have two daughters: Heather and Summer.  We were married in 1970 while attending Ohio State University.
+  We have lived in Japan and eight states: Ohio, Colorado, Virginia, Maryland, Nevada, California, and twice to Texas where we have finally settled down.</p>
+<h5>The Louden Surname</h5>
+<p align="left">The Louden surname is a Scot name dating before the 11th century. Alternate spellings are: Loudon, Lowden, and the orginal, Loudoun. The Louden's are are sept of the Campbell clan (Campbell of Loudoun) and were known for their fierce defense of Scotland's Lowlands. in the 13th and 14th centuries. The Scot patriot, William Wallace, (1273-1305) was the grandson of Sir Hugh Crawford de Loudoun, and the Wallace Sword was displayed in the Loudoun Castle until the sword was sold at auction in 1930.</p>
+<p align="left">The Loudoun castle, located near Galston -- the 5th castle on the site -- was often called the "The Windsor of Scotland" due to its elegant appointments. The castle burnt down during WWII and was not restored. The castle remnants are listed as a National Historic Landmark of Scotland.</p>
 <br>
-      <img src="myfamilytree.gif" class="rounded" alt="Family Tree">
-    </div
+      <img src="images/myfamilytree.gif"  class="rounded" alt="Family Tree">
+    </div>
 
-<div class="row">
- <div class="column">
-          <br><br><br>
-            <h2>My Siblings</h2>
-    <p>Our immediate family line emigrated from Glasgow to Canada in the early 1800's and settled near Peterborough, Ontario by the 1830's. My Grandfather, William Irwin, was born in
+ <div class="col-md-6">
+          <br>
+            <h5>My Siblings</h5>
+    <p align="left">Our immediate family line emigrated from Glasgow to Canada in the early 1800's and settled near Peterborough, Ontario by the 1830's. My Grandfather, William Irwin, was born in
 Fenlon Falls, Ontario in April 4, 1890 and married Kathleen Given (b. May 25, 1892, d. 4/21/1979 Euclid, OH) from nearby Bobcaygen, Ontario.
 William Irwin's parents were John Lowden and Sarah Jane Irwin. Kathleen's parents were William Robinson Given (of Bobcageon, Ontario b. 1842 d. 1924) and Margaret Jane Begg (b. 1860 d. 1900).
 Kathleen's uncle, John C. Begg, a Canadian citizen, came to the US during the Civil War as part of the 47th New York Light Infantry. He died during the Battle of Gettysburg.</p>
 
-<p>My father, William Hugh, (b. January 1, 1912, Peterborough, Ontario; d. July 31, 1986) came to the US in the 1930's. He became a US citizen in 10/15/1943 in Bizerte, Tunisia while serving with the 969th Air Engineers of the 15th US Army Air Force.</p>
+<p align="left">My father, William Hugh, (b. January 1, 1912, Peterborough, Ontario; d. July 31, 1986) came to the US in the 1930's. He became a US citizen in 10/15/1943 in Bizerte, Tunisia while serving with the 969th Air Engineers of the 15th US Army Air Force.</p>
 
-    <p>This column lists my brothers and sisters.<br>
-        I removed the bullets in styles.css</p>
-          <img src="fullfamilytree.gif" width="400" Height="200" class="rounded" alt="Family Tree">
-          <ul>
-              <li>Kathleen</li>
-              <li>Margaret</li>
-              <li>John (deceased)</li>
-              <li>Rose</li>
-              <li>Theresa</li>
-              <li>Edward</li>
+          <img src="images/fullfamilytree.gif" width="500" Height="250" class="rounded" alt="Family Tree">
+          <div  class="row" align="left">
+            <p>My brothers and sisters.</p>
+            <ul>
+              <li>Kathleen Estelle</li>
+              <li>Margaret Ann</li>
+              <li>John Angus (deceased)</li>
+              <li>Rose Marie</li>
+              <li>Theresa May</li>
+              <li>Edward Bruce</li>
               <li>Frank</li>
               <li>James (deceased)</li>
           </ul>
+          </div>
   </div>
 
 </body>

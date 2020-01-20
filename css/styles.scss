@@ -1,54 +1,85 @@
-* {
-  box-sizing: border-box;
+.container {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 $color: blue;
 
-h1, h2 {
-  color:red;
+.container > div {
+    background-color: snow;
+    font-size: 20px;
+    margin: 20px;
+    padding: 20px;
+    width: 200px;
 }
+
+figure {
+  float: right;
+  width: 30%;
+  text-align: center;
+  font-style: italic;
+  font-size: smaller;
+  text-indent: 0;
+  border: thin silver solid;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
 
 td {
   border: 2px double solid blue;
   padding: 0.5 rem;
 }
 
+
 div {
   padding-left: 10px;
   padding-right: 10px;
   border-top: 30px;
-  float-left;
   font-size: 18px;
-  p {
-    color: blue;
-  }
-  ul {
-    color: green;
-  }
+}
+p {
+  color: black;
+}
+
+div ul {
+  color: $color;
 }
 
 body {
-  margin: 0;
+  margin: 10;
 }
 
 p {
   Float: left;
 }
 
-
 p::selection {
-               color: red;
-               background-color: yellow;
-           }
-
+  color: red;
+  background-color: yellow;
+}
 
 ol > li {
   color: $color;
 }
 
 ul {
-  list-style-type:bullet;
-  color: blue;
+  list-style-type: bullet;
+  color: $color;
+}
+
+.themed-grid-col {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: rgba(86, 61, 124, .15);
+  border: 1px solid rgba(86, 61, 124, .2);
+}
+
+.themed-container {
+  padding: 15px;
+  margin-bottom: 30px;
+  background-color: rgba(0, 123, 255, .15);
+  border: 1px solid rgba(86, 123, 255, .2);
 }
 
 /* Style the header */
@@ -56,32 +87,6 @@ ul {
   background-color: lightgrey;
   padding: 20px;
   text-align: center;
-}
-
-/* Style the top navigation bar */
-.topnav {
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  background-color: blue;
-}
-
-/* Style the topnav links */
-.topnav a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* Change color on hover */
-.topnav a:hover {
-  /* background-color: #ddd; */
-  background: var(--color, snow);
-  color: $color;
-  font-weight: bold;
 }
 
 /* Create two equal columns that floats next to each other */
@@ -100,26 +105,27 @@ ul {
 }
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media screen and (max-width:600px) {
+@media screen and (max-width: 600px) {
   .column {
     width: 100%;
   }
-/* code snippet from Computerhope.com */
-.rotateimg180 {
-  -webkit-transform:rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  transform: rotate(180deg);
+
+  /* code snippet from Computerhope.com */
+  .rotateimg180 {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+
+  .btn {
+    border: 2px solid var(--color, black);
+    background: white;
+    font-size: 1em;
+    line-height: 2em;
+    border-radius: 2px;
+    margin-bottom: 5px;
+    text-align: center;
+  }
 }
-
-
-.btn {
-  border: 2px solid var(--color, black);
-  background: white;
-  font-size: 1em;
-  line-height: 2em;
-  border-radius: 2px;
-  margin-bottom: 5px;
-  text-align: center;
-  }}
