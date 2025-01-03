@@ -3,7 +3,7 @@ styles.css
 body {
   margin: 0px;
   height: 100vh;
-  font-family: Times, serif;
+  font-family: Helvetica, sans-serif;
 }
 
 input {
@@ -17,7 +17,7 @@ input:focus {
 }
 input[type=text] {
   /* Give input text a lighter color */
-  color: #black; /*#464646;
+  color: #red; /*#464646;
   margin: 0 0 0 5px;
 }
 input[type=submit] {
