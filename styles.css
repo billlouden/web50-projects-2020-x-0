@@ -3,13 +3,13 @@ styles.css
 body {
   margin: 0px;
   height: 100vh;
-  font-family: Arial, sans-serif;
+  font-family: Times, serif;
 }
 
 input {
   font-size: 16px;
   width: 300px;
-  padding: 13px 0;
+  padding: 15px 0;
   /* Parent selector = & */
 }
 input:focus {
@@ -17,7 +17,7 @@ input:focus {
 }
 input[type=text] {
   /* Give input text a lighter color */
-  color: #464646;
+  color: #black; /*#464646;
   margin: 0 0 0 5px;
 }
 input[type=submit] {
